@@ -1,4 +1,4 @@
-import { envMode } from "../index.js";
+import { envMode } from "../api/index.js";
 
 const errorMiddleware = (err, req, res, next) => {
     err.message ||= 'Internal server error';

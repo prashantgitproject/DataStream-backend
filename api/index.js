@@ -1,20 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { corsOptions } from "./constants/config.js";
-import { connectDB } from "./utils/features.js";
+import { corsOptions } from "../constants/config.js";
+import { connectDB } from "../utils/features.js";
 import {v2 as cloudinary} from "cloudinary";
 import cookieParser from "cookie-parser";
-import { errorMiddleware } from "./middlewares/error.js";
+import { errorMiddleware } from "../middlewares/error.js";
 import bodyParser from "body-parser";
 import RazorPay from "razorpay";
 import nodeCron from "node-cron";
-import { Stats } from "./models/Stats.js";
+import { Stats } from "../models/Stats.js";
 
-import userRoute from './routes/user.js';
-import courseRoute from './routes/course.js';
-import paymentRoute from './routes/payment.js';
-import otherRoute from './routes/other.js';
+import userRoute from '../routes/user.js';
+import courseRoute from '../routes/course.js';
+import paymentRoute from '../routes/payment.js';
+import otherRoute from '../routes/other.js';
 
 dotenv.config( { path: './.env' });
 
