@@ -69,3 +69,4 @@ app.listen(PORT, () => {
 })
 
 export { envMode };
+export default app;
