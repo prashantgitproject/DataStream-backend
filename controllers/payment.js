@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import { Payment } from "../models/Payment.js";
 import { TryCatch } from "../middlewares/error.js";
-import { User } from "../models/user.js";
+import { User } from "../models/User.js";
 import { ErrorHandler } from "../utils/utlity.js";
 import { instance } from "../api/index.js";
 

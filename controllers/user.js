@@ -1,6 +1,6 @@
 import bcrypt, { compare } from "bcrypt";
 import { TryCatch } from "../middlewares/error.js";
-import { User } from "../models/user.js";
+import { User } from "../models/User.js";
 import { cookieOptions, deleteFilesFromCloudinary, sendMail, sendToken, uploadFilesToCloudinary } from "../utils/features.js";
 import { ErrorHandler } from "../utils/utlity.js";
 import { Course } from "../models/Course.js";
