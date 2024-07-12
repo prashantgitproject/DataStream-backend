@@ -3,7 +3,7 @@ import { Payment } from "../models/Payment.js";
 import { TryCatch } from "../middlewares/error.js";
 import { User } from "../models/user.js";
 import { ErrorHandler } from "../utils/utlity.js";
-import { instance } from "../app.js";
+import { instance } from "../index.js";
 
 export const buySubscription = TryCatch(async (req, res, next) => {
   const user = await User.findById(req.user._id);
