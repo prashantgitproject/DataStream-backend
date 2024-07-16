@@ -86,7 +86,7 @@ export const updateProfile = TryCatch(async (req, res, next) => {
 
     if(file) {
         console.log('file exist');
-        if(user.avatar) {
+        if(user.avatar.public_id) {
             console.log('avatar exist');
             await deleteFilesFromCloudinary([user.avatar.public_id]);
         }

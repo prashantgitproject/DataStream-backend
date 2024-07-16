@@ -89,7 +89,6 @@ const uploadFilesToCloudinary = async (files = [], folder, type = 'auto') => {
   };
 
   const deleteFilesFromCloudinary = async (public_ids) => {
-    console.log(public_ids);
     const deletePromises = public_ids.map((id) => {
       return new Promise((resolve, reject) => {
         cloudinary.uploader.destroy(id, (error, result) => {
