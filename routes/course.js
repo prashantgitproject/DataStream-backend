@@ -9,9 +9,9 @@ app.get('/courses', getAllCourses)
 
 app.use(isAuthenticated);
 
-app.post('createcourse', authorizeAdmin, singleAvatar, createCourse)
+app.post('/createcourse', authorizeAdmin, singleAvatar, createCourse)
 
-app.route('courses/:id')
+app.route('/courses/:id')
     .get(authorizeSubscribers, getCourseLectures)
     .put(authorizeAdmin, singleAvatar, addLecture)
     .delete(authorizeAdmin, deleteCourse)

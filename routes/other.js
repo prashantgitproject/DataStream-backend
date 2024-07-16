@@ -4,9 +4,9 @@ import { authorizeAdmin, isAuthenticated } from '../middlewares/auth.js';
 
 const app = express.Router();
 
-app.post('contact', contact)
+app.post('/contact', contact)
 
-app.post('courserequest', courseRequest)
+app.post('/courserequest', courseRequest)
 
 app.get('/admin/stats', isAuthenticated, authorizeAdmin, getDashboardStats)
 
