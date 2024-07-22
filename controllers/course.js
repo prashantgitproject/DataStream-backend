@@ -87,7 +87,7 @@ export const addLecture = TryCatch(async (req, res, next) => {
 
     if (!file) return next(new ErrorHandler("Please Upload video lecture", 400));
 
-    const result = await uploadFilesToCloudinary([file], "lecture", type = "video"); 
+    const result = await uploadFilesToCloudinary([file], "lecture", "video"); 
 
     const video = {
         public_id: result[0].public_id,

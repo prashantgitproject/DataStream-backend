@@ -261,11 +261,13 @@ const user = await User.findById(req.params.id);
 
 if (!user) return next(new ErrorHandler("User not found", 404));
 
-await deleteFilesFromCloudinary([user.avatar.public_id]);
+if(user.avatar.public_id){
+    await deleteFilesFromCloudinary([user.avatar.public_id]);
+}
 
 // Cancel Subscription
 
-await user.remove();
+await user.deleteOne();
 
 res.status(200).json({
     success: true,

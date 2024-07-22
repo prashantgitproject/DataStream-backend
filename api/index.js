@@ -15,6 +15,7 @@ import userRoute from '../routes/user.js';
 import courseRoute from '../routes/course.js';
 import paymentRoute from '../routes/payment.js';
 import otherRoute from '../routes/other.js';
+import adminRoute from '../routes/admin.js';
 
 dotenv.config( { path: './.env' });
 
@@ -55,6 +56,7 @@ app.use('/api/v1/user', userRoute);
 app.use('/api/v1/course', courseRoute);
 app.use('/api/v1/payment', paymentRoute);
 app.use('/api/v1/other', otherRoute);
+app.use('/api/v1/admin', adminRoute);
 
 
 app.get('/' , (req, res) => {

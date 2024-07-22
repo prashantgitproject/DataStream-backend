@@ -21,4 +21,8 @@ const loginValidators = () => [
     body("password", "PLease enter password").notEmpty(),
 ];
 
-export { registerValidators, loginValidators, validateHandler };
+const adminLoginValidator = () => [
+    body("secretKey", "Please Enter Secret Key").notEmpty(),
+  ];
+
+export { registerValidators, loginValidators, validateHandler, adminLoginValidator };

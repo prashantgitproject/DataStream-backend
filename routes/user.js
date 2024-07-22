@@ -1,5 +1,5 @@
 import express from 'express';
-import { deleteUser, forgetPassword, getAllUsers, getMyProfile, login, logout, registerUser, resetPassword, updatePassword, updateProfile, updateUserRole, verifyUser } from '../controllers/user.js';
+import { addToPlaylist, deleteUser, forgetPassword, getAllUsers, getMyProfile, login, logout, registerUser, removeFromPlaylist, resetPassword, updatePassword, updateProfile, updateUserRole, verifyUser } from '../controllers/user.js';
 import { loginValidators, registerValidators, validateHandler } from '../libs/validators.js';
 import { singleAvatar } from '../middlewares/multer.js';
 import { authorizeAdmin, isAuthenticated } from '../middlewares/auth.js';
@@ -18,6 +18,8 @@ app.get('/me', getMyProfile)
 app.put('/updateprofile', singleAvatar, updateProfile)
 app.get('/logout', logout)
 app.put('/resetpassword', resetPassword)
+app.post('/addtoplaylist', addToPlaylist)
+app.delete('/removefromplaylist', removeFromPlaylist)
 
 app.use(authorizeAdmin)
 

@@ -45,10 +45,12 @@ export const paymentVerification = TryCatch(async (req, res, next) => {
     .update(razorpay_payment_id + "|" + subscription_id, "utf-8")
     .digest("hex");
 
+    console.log('generated_signature', generated_signature)
+
   const isAuthentic = generated_signature === razorpay_signature;
 
   if (!isAuthentic)
-    return res.redirect(`${process.env.FRONTEND_URL}/paymentfail`);
+    return res.redirect(`${process.env.CLIENT_URL}/paymentfail`);
 
   // database comes here
   await Payment.create({
@@ -62,7 +64,7 @@ export const paymentVerification = TryCatch(async (req, res, next) => {
   await user.save();
 
   res.redirect(
-    `${process.env.FRONTEND_URL}/paymentsuccess?reference=${razorpay_payment_id}`
+    `${process.env.CLIENT_URL}/paymentsuccess?reference=${razorpay_payment_id}`
   );
 });
 
@@ -86,20 +88,22 @@ export const cancelSubscription = TryCatch(async (req, res, next) => {
   const payment = await Payment.findOne({
     razorpay_subscription_id: subscriptionId,
   });
-
+ 
   const gap = Date.now() - payment.createdAt;
 
   const refundTime = process.env.REFUND_DAYS * 24 * 60 * 60 * 1000;
-
+ 
   if (refundTime > gap) {
     await instance.payments.refund(payment.razorpay_payment_id);
     refund = true;
   }
+  
+  await payment.deleteOne();
 
-  await payment.remove();
   user.subscription.id = undefined;
   user.subscription.status = undefined;
   await user.save();
+
 
   res.status(200).json({
     success: true,
